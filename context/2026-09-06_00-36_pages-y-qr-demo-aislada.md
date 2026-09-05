@@ -1,8 +1,8 @@
 # Registro 006 — Herramienta interna, Pages y QR aislado de DEMO
 
 **Creado:** 06/09/2026 00:36 CEST
-**Última actualización:** 06/09/2026 00:47 CEST
-**Estado:** implementación local completada; publicación bloqueada por el plan de GitHub
+**Última actualización:** 06/09/2026 00:52 CEST
+**Estado:** completada y publicada
 
 ## Decisión de producto
 
@@ -51,12 +51,19 @@ React usa `BrowserRouter` con `import.meta.env.BASE_URL`, por lo que tanto los
 recursos como las rutas internas funcionan bajo `/POMA/`. El alta por correo
 también construye el redirect respetando esa base.
 
-Las variables `VITE_SUPABASE_URL` y `VITE_SUPABASE_PUBLISHABLE_KEY` ya están
-creadas en GitHub Actions. La API de GitHub rechazó habilitar Pages con HTTP
-422 porque el repositorio es privado y el plan actual no admite Pages para ese
-repositorio. No se cambia la visibilidad automáticamente porque publicarlo
-expondría todo su contenido. Para activar el destino del QR habrá que hacer el
-repositorio público o contratar un plan de GitHub que incluya Pages privado.
+Las variables `VITE_SUPABASE_URL` y `VITE_SUPABASE_PUBLISHABLE_KEY` están
+creadas en GitHub Actions.
+
+**Bloqueo resuelto:** a las 00:47 CEST la API de GitHub rechazaba habilitar
+Pages con HTTP 422 porque el repositorio era privado y el plan no admitía Pages
+privado. El propietario hizo público el repositorio y, a las 00:50 CEST, Pages
+se habilitó mediante la API con `build_type: workflow` y HTTPS forzado.
+
+La publicación activa es:
+
+```text
+https://martinmarch.github.io/POMA/
+```
 
 ## QR generado
 
@@ -78,6 +85,9 @@ comparando el contenido recuperado con la URL esperada.
 - `/r/demo` sin token rechaza el acceso;
 - `/r/demo` con el token de Mesa 01 carga el catálogo remoto y muestra la mesa;
 - QR PNG decodificado correctamente;
+- workflow remoto `33997045013` completado con sus trabajos `build` y `deploy`
+  correctos;
+- portada, acceso y carta de la Mesa 01 abiertos desde la URL pública;
 - esquema y RLS sin incidencias; el asesor de Auth mantiene un aviso para
   activar la protección contra contraseñas filtradas antes de producción.
 
@@ -89,3 +99,6 @@ comparando el contenido recuperado con la URL esperada.
 - **06/09/2026 00:47 CEST:** el commit `6612571` se publica en `main`; la
   ejecución real valida checkout, Node, instalación, lint y tipos, y se detiene
   al configurar Pages por la limitación del plan privado.
+- **06/09/2026 00:52 CEST:** tras hacer público el repositorio, Pages se
+  habilita con HTTPS, el workflow `33997045013` finaliza correctamente y se
+  verifica desde Internet la portada, el login y el destino exacto del QR.

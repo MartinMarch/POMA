@@ -64,6 +64,9 @@ valida lint y tipos, compila React con la ruta base proporcionada por Pages,
 añade el fallback `404.html` necesario para las rutas SPA y publica el artefacto
 en cada `push` a `main`.
 
+La herramienta está publicada en
+[`https://martinmarch.github.io/POMA/`](https://martinmarch.github.io/POMA/).
+
 La URL y la clave publicable de Supabase se leen desde las variables de GitHub
 Actions `VITE_SUPABASE_URL` y `VITE_SUPABASE_PUBLISHABLE_KEY`. Son parámetros
 de cliente; ninguna clave `service_role` ni contraseña se guarda en Git.

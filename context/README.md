@@ -1,7 +1,7 @@
 # Contexto vivo de POMA
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 06/09/2026 00:47 CEST
+**Última actualización:** 06/09/2026 00:52 CEST
 
 Esta carpeta es la fuente rápida de contexto funcional y técnico para las
 personas y agentes de código que trabajen en POMA.
@@ -26,4 +26,4 @@ personas y agentes de código que trabajen en POMA.
 | 05/09/2026 22:34 CEST | [Conexión del frontend con Supabase remoto](./2026-09-05_22-34_conexion-frontend-supabase-remoto.md) | Variables Vite, política de claves y validación remota |
 | 05/09/2026 23:40 CEST | [Demo, vertical 001: catálogo multitenant](./2026-09-05_23-40_demo-vertical-001-catalogo-multitenant.md) | Recorrido visual, esquema desplegado, arquitectura multitenant y próximos servicios |
 | 06/09/2026 00:21 CEST | [Identidad, onboarding y superadministración](./2026-09-06_00-21_identidad-onboarding-y-superadministracion.md) | Auth, alta transaccional de restaurantes, roles, consola global y pruebas de aislamiento |
-| 06/09/2026 00:36 CEST | [Pages y QR aislado de DEMO](./2026-09-06_00-36_pages-y-qr-demo-aislada.md) | Cuenta global activa, herramienta interna, despliegue Pages, QR y bloqueo del plan privado |
+| 06/09/2026 00:36 CEST | [Pages y QR aislado de DEMO](./2026-09-06_00-36_pages-y-qr-demo-aislada.md) | Cuenta global activa, herramienta interna, Pages publicado y QR verificado desde Internet |
