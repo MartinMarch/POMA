@@ -1,0 +1,1 @@
+-- Initial migration baseline. The domain model will be added in a later phase.

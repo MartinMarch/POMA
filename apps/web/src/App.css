@@ -1,0 +1,17 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 100svh;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}

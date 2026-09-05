@@ -1,0 +1,26 @@
+{
+  "name": "poma",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plataforma de pedidos y pagos para hostelería",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @poma/web",
+    "build": "npm run build --workspace @poma/web",
+    "lint": "npm run lint --workspace @poma/web",
+    "typecheck": "npm run typecheck --workspace @poma/web",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset",
+    "db:link": "supabase link",
+    "db:types": "supabase gen types --lang typescript --local > apps/web/src/types/database.types.ts"
+  },
+  "devDependencies": {
+    "supabase": "^2.116.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
