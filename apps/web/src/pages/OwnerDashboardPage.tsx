@@ -44,8 +44,8 @@ export function OwnerDashboardPage() {
   }, [userId])
 
   async function handleSignOut() {
-    await signOut()
     navigate('/', { replace: true })
+    await signOut()
   }
 
   async function togglePublished(id: number, published: boolean) {

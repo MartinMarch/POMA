@@ -1,14 +1,12 @@
 import { useState, type FormEvent } from 'react'
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../features/auth/useAuth'
+import { getAuthErrorMessage } from '../features/auth/auth-errors'
+import { safeNext } from '../lib/navigation'
 import { supabase } from '../lib/supabase'
 import { PomaBrand } from '../components/PomaBrand'
 
 type AuthMode = 'login' | 'register'
-
-function safeNext(value: string | null) {
-  return value?.startsWith('/') && !value.startsWith('//') ? value : '/panel'
-}
 
 export function AuthPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -20,6 +18,7 @@ export function AuthPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
+  const [pendingEmail, setPendingEmail] = useState<string | null>(null)
   const { user, loading } = useAuth()
   const navigate = useNavigate()
   const next = safeNext(searchParams.get('next'))
@@ -30,8 +29,17 @@ export function AuthPage() {
     setMode(nextMode)
     setError(null)
     setMessage(null)
-    setSearchParams(nextMode === 'register' ? { mode: 'register' } : {})
+    setPendingEmail(null)
+    const nextParams = new URLSearchParams(searchParams)
+    if (nextMode === 'register') nextParams.set('mode', 'register')
+    else nextParams.delete('mode')
+    setSearchParams(nextParams)
   }
+
+  const emailRedirectTo = new URL(
+    `${import.meta.env.BASE_URL}panel`,
+    window.location.origin,
+  ).toString()
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -41,15 +49,13 @@ export function AuthPage() {
 
     try {
       if (mode === 'register') {
+        const normalizedEmail = email.trim().toLowerCase()
         const { data, error: signUpError } = await supabase.auth.signUp({
-          email: email.trim(),
+          email: normalizedEmail,
           password,
           options: {
             data: { full_name: fullName.trim() },
-            emailRedirectTo: new URL(
-              `${import.meta.env.BASE_URL}panel`,
-              window.location.origin,
-            ).toString(),
+            emailRedirectTo,
           },
         })
 
@@ -57,6 +63,7 @@ export function AuthPage() {
 
         if (data.session) navigate(next, { replace: true })
         else {
+          setPendingEmail(normalizedEmail)
           setMessage(
             'Cuenta creada. Revisa tu correo para confirmarla y después inicia sesión.',
           )
@@ -70,12 +77,29 @@ export function AuthPage() {
         if (signInError) throw signInError
         navigate(next, { replace: true })
       }
-    } catch {
-      setError(
-        mode === 'register'
-          ? 'No hemos podido crear la cuenta. Revisa los datos o prueba con otro correo.'
-          : 'Correo o contraseña incorrectos.',
-      )
+    } catch (reason) {
+      setError(getAuthErrorMessage(reason, mode))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  async function resendConfirmation() {
+    if (!pendingEmail) return
+    setBusy(true)
+    setError(null)
+    setMessage(null)
+
+    try {
+      const { error: resendError } = await supabase.auth.resend({
+        type: 'signup',
+        email: pendingEmail,
+        options: { emailRedirectTo },
+      })
+      if (resendError) throw resendError
+      setMessage('Confirmación reenviada. Revisa también la carpeta de correo no deseado.')
+    } catch (reason) {
+      setError(getAuthErrorMessage(reason, 'resend'))
     } finally {
       setBusy(false)
     }
@@ -173,7 +197,7 @@ export function AuthPage() {
             {error && <p className="form-alert error" role="alert">{error}</p>}
             {message && <p className="form-alert success" role="status">{message}</p>}
 
-            <button className="button button-primary form-submit" disabled={busy}>
+            <button className="button button-primary form-submit" type="submit" disabled={busy}>
               {busy
                 ? 'Procesando…'
                 : mode === 'login'
@@ -181,6 +205,17 @@ export function AuthPage() {
                   : 'Crear cuenta y continuar'}
             </button>
           </form>
+
+          {pendingEmail && (
+            <button
+              className="auth-resend-button"
+              type="button"
+              disabled={busy}
+              onClick={() => void resendConfirmation()}
+            >
+              Reenviar correo de confirmación
+            </button>
+          )}
 
           <Link className="auth-back-link" to="/">← Volver a la web de POMA</Link>
         </div>

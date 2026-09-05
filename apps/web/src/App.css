@@ -270,6 +270,8 @@
 .form-alert.error { color: #8f3429; background: #fae9e5; border: 1px solid #ecc5bd; }
 .form-alert.success { color: #276044; background: #e5f2e9; border: 1px solid #bddac6; }
 .auth-back-link { display: block; margin-top: 1.5rem; color: var(--muted); font-size: .72rem; text-align: center; }
+.auth-resend-button { width: 100%; margin-top: 1rem; padding: .5rem; color: var(--green); background: transparent; border: 0; cursor: pointer; font-size: .72rem; font-weight: 700; text-decoration: underline; text-underline-offset: .2rem; }
+.auth-resend-button:disabled { cursor: wait; opacity: .55; }
 
 .setup-page { min-height: 100svh; background: var(--paper); }
 .session-nav { color: var(--muted); font-size: .7rem; }

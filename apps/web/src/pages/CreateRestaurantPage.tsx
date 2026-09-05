@@ -2,17 +2,8 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../features/auth/useAuth'
 import { supabase } from '../lib/supabase'
+import { slugify } from '../lib/slug'
 import { PomaBrand } from '../components/PomaBrand'
-
-function slugify(value: string) {
-  return value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
-    .slice(0, 80)
-}
 
 export function CreateRestaurantPage() {
   const [name, setName] = useState('')

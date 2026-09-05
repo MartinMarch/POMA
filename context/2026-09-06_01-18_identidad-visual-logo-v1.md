@@ -1,8 +1,13 @@
 # Identidad visual POMA v1
 
 **Creado:** 06/09/2026 01:18 CEST  
-**Última actualización:** 06/09/2026 01:21 CEST  
-**Estado:** completada
+**Última actualización:** 06/09/2026 01:53 CEST
+**Estado:** parcialmente obsoleta
+
+> **Actualización — 06/09/2026 01:53 CEST:** la primera construcción manual
+> del SVG deformaba las proporciones del PNG. El activo fue sustituido por una
+> vectorización de sus siluetas reales y la decisión queda documentada en
+> [Auditoría funcional, registro y tests web](./2026-09-06_01-53_auditoria-funcional-registro-y-tests-web.md).
 
 ## Objetivo de esta iteración
 

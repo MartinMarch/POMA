@@ -57,8 +57,8 @@ export function SuperAdminDashboardPage() {
   }, [])
 
   async function handleSignOut() {
-    await signOut()
     navigate('/', { replace: true })
+    await signOut()
   }
 
   async function deleteRestaurant(restaurant: RestaurantSummary) {
@@ -355,7 +355,7 @@ function UsersSection({ data, currentUserId, busyKey, onDelete }: { data: AdminD
       <div className="control-panel-heading"><div><p className="tiny-label">IDENTIDADES</p><h2>Usuarios registrados</h2></div></div>
       <div className="data-table-wrap">
         <table className="data-table">
-          <thead><tr><th>Usuario</th><th>Rol global</th><th>Restaurantes</th><th>Correo</th><th>Alta</th><th><span className="sr-only">Acciones</span></th></tr></thead>
+          <thead><tr><th>Usuario</th><th>Correo</th><th>Rol global</th><th>Restaurantes</th><th>Estado</th><th>Alta</th><th><span className="sr-only">Acciones</span></th></tr></thead>
           <tbody>
             {data.profiles.map((profile) => {
               const admin = data.admins.some((entry) => entry.user_id === profile.id)
@@ -365,6 +365,7 @@ function UsersSection({ data, currentUserId, busyKey, onDelete }: { data: AdminD
               return (
                 <tr key={profile.id}>
                   <td><div className="table-identity"><span className="person">{(profile.full_name?.[0] ?? profile.email?.[0] ?? 'U').toUpperCase()}</span><div><strong>{profile.full_name ?? 'Sin nombre'}</strong><small>{profile.last_sign_in_at ? `Último acceso ${formatDate(profile.last_sign_in_at)}` : 'Sin accesos'}</small></div></div></td>
+                  <td>{profile.email ?? 'Sin correo'}</td>
                   <td><span className={admin ? 'role-badge admin' : 'role-badge'}>{admin ? 'Superadmin' : 'Cliente'}</span></td>
                   <td>{restaurantNames.join(', ') || '—'}</td>
                   <td><span className={profile.email_confirmed_at ? 'email-state confirmed' : 'email-state'}>{profile.email_confirmed_at ? 'Confirmado' : 'Pendiente'}</span></td>
