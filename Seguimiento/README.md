@@ -1,7 +1,7 @@
 # Seguimiento de dedicación
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 05/09/2026 22:34 CEST
+**Última actualización:** 06/09/2026 00:45 CEST
 
 Esta carpeta contiene el registro del tiempo dedicado a POMA para futuros
 análisis de esfuerzo y coste.

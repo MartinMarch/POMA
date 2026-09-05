@@ -1,16 +1,25 @@
 # Registro de horas
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 05/09/2026 22:34 CEST
+**Última actualización:** 06/09/2026 00:45 CEST
 
 | Sesión | Inicio | Fin | Duración | Ejecución | Trabajo realizado |
 | --- | --- | --- | --- | --- | --- |
 | 001 | 05/09/2026 22:06 CEST | 05/09/2026 22:24 CEST | 18 min (0,30 h) | Agente de código | Clonado e inicialización de Git, documentación, monorepo React y Supabase local |
 | 002 | 05/09/2026 22:24 CEST | 05/09/2026 22:29 CEST | 5 min (0,08 h) | Agente de código + OAuth del usuario | Configuración, autenticación y prueba del Supabase MCP; instalación de Agent Skills |
 | 003 | 05/09/2026 22:29 CEST | 05/09/2026 22:34 CEST | 5 min (0,08 h) | Agente de código | Conexión segura del frontend con Supabase remoto y validación |
+| 004 | 05/09/2026 23:08 CEST (inicio estimado) | 05/09/2026 23:42 CEST | 34 min (0,57 h) | Agente de código | Primera vertical de la demo: UX responsive, catálogo y carrito, esquema multitenant local/remoto, RLS, pruebas y arquitectura de pedidos/pagos/TPV |
+| 005 | 05/09/2026 23:44 CEST (inicio estimado) | 06/09/2026 00:23 CEST | 39 min (0,65 h) | Agente de código | Supabase Auth, alta transaccional de restaurantes, panel de propietarios, consola superadmin, operaciones destructivas y pruebas de aislamiento |
+| 006 | 06/09/2026 00:25 CEST (inicio estimado) | 06/09/2026 00:45 CEST | 20 min (0,33 h) | Agente de código | Primera cuenta superadmin, separación de DEMO, frontend operativo, workflow de Pages, variables de Actions, QR verificable y diagnóstico del bloqueo de plan |
 
 ## Totales
 
-**Actualizado:** 05/09/2026 22:34 CEST
+**Actualizado:** 06/09/2026 00:45 CEST
 
-- Tiempo finalizado: **28 minutos (0,47 horas)**.
+- Tiempo finalizado: **121 minutos (2,02 horas)**.
+- La hora de inicio de la sesión 004 es una estimación basada en el comienzo de
+  la ejecución registrada; su fin sí se tomó del reloj del sistema.
+- El inicio de la sesión 005 también es estimado; su fin está medido por el
+  reloj del entorno.
+- El inicio de la sesión 006 es estimado a partir de la continuación inmediata
+  de la sesión anterior; su fin está medido por el reloj del entorno.
