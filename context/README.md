@@ -1,7 +1,7 @@
 # Contexto vivo de POMA
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 05/09/2026 22:24 CEST
+**Última actualización:** 05/09/2026 22:29 CEST
 
 Esta carpeta es la fuente rápida de contexto funcional y técnico para las
 personas y agentes de código que trabajen en POMA.
@@ -22,3 +22,4 @@ personas y agentes de código que trabajen en POMA.
 | Fecha y hora | Documento | Contenido |
 | --- | --- | --- |
 | 05/09/2026 22:24 CEST | [Inicio y hoja de ruta](./2026-09-05_22-11_inicializacion-y-hoja-de-ruta.md) | Visión, alcance, arquitectura inicial y fases previstas |
+| 05/09/2026 22:29 CEST | [Supabase MCP y Agent Skills](./2026-09-05_22-29_supabase-mcp-y-skills.md) | Conexión de Codex al proyecto remoto y skills instaladas |
