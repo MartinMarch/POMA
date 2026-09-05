@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { PomaBrand } from '../components/PomaBrand'
 
 const onboardingSteps = [
   ['01', 'Crea tu espacio', 'Datos fiscales, locales, usuarios y permisos.'],
@@ -11,7 +12,7 @@ export function RegistrationPage() {
   return (
     <div className="onboarding-page">
       <header className="simple-nav">
-        <Link className="wordmark" to="/">POMA<span>.</span></Link>
+        <PomaBrand />
         <div className="simple-nav-actions">
           <Link className="text-link" to="/acceso">Iniciar sesión</Link>
         </div>

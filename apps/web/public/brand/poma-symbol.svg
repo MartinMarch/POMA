@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="poma-logo-title poma-logo-description">
+  <title id="poma-logo-title">POMA</title>
+  <desc id="poma-logo-description">Una P verde integra una mesa, un dispositivo y un marco de escaneo dorado.</desc>
+  <defs>
+    <linearGradient id="poma-green" x1="42" y1="35" x2="203" y2="213" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#003f35"/>
+      <stop offset="1" stop-color="#00614d"/>
+    </linearGradient>
+    <linearGradient id="poma-gold" x1="96" y1="82" x2="150" y2="127" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c79243"/>
+      <stop offset=".5" stop-color="#e0b66b"/>
+      <stop offset="1" stop-color="#bd8435"/>
+    </linearGradient>
+  </defs>
+
+  <path fill="url(#poma-green)" d="M61 28h75c47 0 84 37 84 84s-37 84-84 84h-16v12c0 16-12 28-28 28H61c-16 0-29-12-29-28V57c0-16 13-29 29-29Z"/>
+
+  <path fill="#fff" d="M65 119c17-8 39-12 63-12s46 4 63 12c14 7 14 16 0 23-15 8-36 11-57 12-7 0-12 5-12 12v21c0 6 3 10 7 13-8 1-15-1-20-6-5-4-7-10-7-17v-11c0-7-5-12-12-12-21-1-40-4-55-12-14-7-14-16 0-23Z"/>
+
+  <path d="M91 115V78c0-14 11-25 25-25h24c14 0 25 11 25 25v37" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g fill="none" stroke="url(#poma-gold)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M116 83h-12v13"/>
+    <path d="M140 83h12v13"/>
+    <path d="M116 124h-12v-13"/>
+    <path d="M140 124h12v-13"/>
+  </g>
+</svg>

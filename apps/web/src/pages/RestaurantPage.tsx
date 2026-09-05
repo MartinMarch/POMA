@@ -7,6 +7,7 @@ import {
   type CatalogItem,
   type RestaurantCatalog,
 } from '../features/catalog/catalog'
+import { PomaBrand } from '../components/PomaBrand'
 
 type Cart = Record<number, number>
 type CatalogResult = {
@@ -143,9 +144,7 @@ export function RestaurantPage() {
   return (
     <div className="restaurant-app" style={theme}>
       <header className="restaurant-header">
-        <span className="restaurant-poma">
-          POMA<span>.</span>
-        </span>
+        <PomaBrand compact linked={false} />
         <div className="table-badge">
           <span className={tableToken ? 'online-dot' : 'preview-dot'} />
           {slug === 'demo' && tableToken === demoTableToken

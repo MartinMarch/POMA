@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../features/auth/useAuth'
 import { supabase } from '../lib/supabase'
+import { PomaBrand } from '../components/PomaBrand'
 
 function slugify(value: string) {
   return value
@@ -55,7 +56,7 @@ export function CreateRestaurantPage() {
   return (
     <div className="setup-page">
       <header className="simple-nav">
-        <Link className="wordmark" to="/">POMA<span>.</span></Link>
+        <PomaBrand />
         <div className="session-nav">
           <span>{user?.email}</span>
           <button type="button" onClick={() => void signOut()}>Cerrar sesión</button>

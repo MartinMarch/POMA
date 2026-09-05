@@ -9,6 +9,7 @@ import {
   type RestaurantSummary,
 } from '../features/dashboard/dashboard'
 import { supabase } from '../lib/supabase'
+import { PomaBrand } from '../components/PomaBrand'
 
 type AdminSection = 'resumen' | 'restaurantes' | 'catalogos' | 'usuarios'
 type AdminResource =
@@ -188,7 +189,7 @@ export function SuperAdminDashboardPage() {
   return (
     <div className="portal-page superadmin-theme">
       <aside className="portal-sidebar">
-        <Link className="wordmark light" to="/">POMA<span>.</span></Link>
+        <PomaBrand inverse />
         <div className="superadmin-mark"><span>◆</span><div><strong>Control global</strong><small>Superadministrador</small></div></div>
         <nav>
           <button className={section === 'resumen' ? 'active' : ''} type="button" onClick={() => setSection('resumen')}>Resumen</button>

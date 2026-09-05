@@ -6,6 +6,7 @@ import {
   type OwnerDashboardData,
 } from '../features/dashboard/dashboard'
 import { supabase } from '../lib/supabase'
+import { PomaBrand } from '../components/PomaBrand'
 
 type OwnerResource =
   | { status: 'loading' }
@@ -84,7 +85,7 @@ export function OwnerDashboardPage() {
   return (
     <div className="portal-page">
       <aside className="portal-sidebar">
-        <Link className="wordmark light" to="/">POMA<span>.</span></Link>
+        <PomaBrand inverse />
         <div className="portal-account">
           <span className="account-avatar">
             {(user?.user_metadata.full_name?.[0] ?? user?.email?.[0] ?? 'P').toUpperCase()}

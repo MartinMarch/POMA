@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../features/auth/useAuth'
 import { supabase } from '../lib/supabase'
+import { PomaBrand } from '../components/PomaBrand'
 
 type AuthMode = 'login' | 'register'
 
@@ -83,7 +84,7 @@ export function AuthPage() {
   return (
     <div className="auth-page">
       <section className="auth-brand-panel">
-        <Link className="wordmark light" to="/">POMA<span>.</span></Link>
+        <PomaBrand inverse />
         <div>
           <p className="kicker">ÁREA DE RESTAURANTES</p>
           <h1>Tu sala de control empieza aquí.</h1>

@@ -1,15 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --ink: #182018;
-  --muted: #667066;
-  --paper: #f6f4ee;
-  --surface: #fffdf8;
-  --line: rgba(24, 32, 24, 0.14);
-  --green: #1f5b45;
-  --orange: #ef643b;
+  --ink: #102720;
+  --muted: #63716b;
+  --paper: #f5f2e8;
+  --surface: #fffdfa;
+  --line: rgba(0, 77, 63, 0.15);
+  --green: #004d3f;
+  --green-deep: #003b31;
+  --green-bright: #00614d;
+  --green-soft: #e4efeb;
+  --gold: #d2a254;
+  --gold-dark: #936624;
+  --gold-soft: #f2e6ce;
   --sans: 'DM Sans', system-ui, sans-serif;
-  --serif: 'DM Serif Display', Georgia, serif;
+  --serif: 'Manrope', 'DM Sans', system-ui, sans-serif;
   font-family: var(--sans);
   color: var(--ink);
   background: var(--paper);
@@ -19,7 +24,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; accent-color: var(--green); }
+::selection { color: white; background: var(--green); }
 body { margin: 0; min-width: 320px; min-height: 100svh; overflow-x: hidden; }
 button, input { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }

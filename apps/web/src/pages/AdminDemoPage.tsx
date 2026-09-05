@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router'
+import { PomaBrand } from '../components/PomaBrand'
 
 const stations = [
   { name: 'Catálogo Supabase', state: 'Conectado', ready: true },
@@ -13,7 +14,7 @@ export function AdminDemoPage() {
   return (
     <div className="admin-page">
       <aside className="admin-sidebar">
-        <Link className="wordmark light" to="/">POMA<span>.</span></Link>
+        <PomaBrand inverse />
         <nav>
           <a className="active" href="#resumen">Resumen</a>
           <a href="#pedidos">Pedidos</a>

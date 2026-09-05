@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { PomaBrand } from '../components/PomaBrand'
 
 const capabilities = [
   {
@@ -22,9 +23,7 @@ export function MarketingPage() {
   return (
     <div className="marketing-shell">
       <header className="marketing-nav">
-        <Link className="wordmark" to="/" aria-label="POMA, inicio">
-          POMA<span>.</span>
-        </Link>
+        <PomaBrand />
         <nav aria-label="Navegación principal">
           <a href="#capacidades">Capacidades</a>
           <Link to="/registro">Alta de cliente</Link>
@@ -60,7 +59,7 @@ export function MarketingPage() {
           <div className="control-visual" aria-label="Vista previa de la consola de POMA">
             <div className="control-preview">
               <div className="control-preview-header">
-                <span className="control-preview-mark">P.</span>
+                <PomaBrand compact iconOnly linked={false} />
                 <div><small>CONSOLA DE POMA</small><strong>Vista general</strong></div>
                 <span className="health-pill">Operativa</span>
               </div>
