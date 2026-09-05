@@ -1,7 +1,7 @@
 # Registro 005 — Identidad, onboarding y superadministración
 
 **Creado:** 06/09/2026 00:21 CEST
-**Última actualización:** 06/09/2026 00:36 CEST
+**Última actualización:** 06/09/2026 00:47 CEST
 **Estado:** funcional y desplegado; primera cuenta global activada
 
 ## Objetivo
@@ -112,7 +112,9 @@ activa. Su correo y su contraseña no se versionan en el repositorio.
 - Los wrappers públicos conservan estas garantías después de mover los
   privilegios al esquema `private`.
 - El bootstrap por correo funciona antes y después de crear la cuenta.
-- Los asesores locales y el asesor remoto de seguridad no muestran incidencias.
+- Los asesores de esquema y RLS no muestran incidencias. El asesor remoto de
+  Auth avisa de que la protección contra contraseñas filtradas está desactivada;
+  debe activarse antes de producción desde la configuración de Auth.
 
 ### Navegador
 
@@ -150,3 +152,5 @@ consola global. Después puede comenzar el modelo transaccional de comandas.
   tipos, el build y los asesores de seguridad sin incidencias.
 - **06/09/2026 00:36 CEST:** se crea y confirma la primera cuenta global; se
   verifica mediante un login real que RLS expone su rol de superadministrador.
+- **06/09/2026 00:47 CEST:** la revisión final detecta el aviso de protección
+  contra contraseñas filtradas pendiente de activar en Supabase Auth.

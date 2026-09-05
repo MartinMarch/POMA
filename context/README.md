@@ -1,7 +1,7 @@
 # Contexto vivo de POMA
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 06/09/2026 00:45 CEST
+**Última actualización:** 06/09/2026 00:47 CEST
 
 Esta carpeta es la fuente rápida de contexto funcional y técnico para las
 personas y agentes de código que trabajen en POMA.

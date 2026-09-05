@@ -1,7 +1,7 @@
 # Registro 006 — Herramienta interna, Pages y QR aislado de DEMO
 
 **Creado:** 06/09/2026 00:36 CEST
-**Última actualización:** 06/09/2026 00:45 CEST
+**Última actualización:** 06/09/2026 00:47 CEST
 **Estado:** implementación local completada; publicación bloqueada por el plan de GitHub
 
 ## Decisión de producto
@@ -78,10 +78,14 @@ comparando el contenido recuperado con la URL esperada.
 - `/r/demo` sin token rechaza el acceso;
 - `/r/demo` con el token de Mesa 01 carga el catálogo remoto y muestra la mesa;
 - QR PNG decodificado correctamente;
-- asesor remoto de seguridad de Supabase sin incidencias.
+- esquema y RLS sin incidencias; el asesor de Auth mantiene un aviso para
+  activar la protección contra contraseñas filtradas antes de producción.
 
 ## Historial
 
 - **06/09/2026 00:36 CEST:** cuenta global activada, interfaz DEMO aislada,
   pipeline de Pages creado, variables de Actions configuradas, QR generado y
   limitación del plan de GitHub documentada.
+- **06/09/2026 00:47 CEST:** el commit `6612571` se publica en `main`; la
+  ejecución real valida checkout, Node, instalación, lint y tipos, y se detiene
+  al configurar Pages por la limitación del plan privado.
