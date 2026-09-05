@@ -1,8 +1,8 @@
 # Identidad visual POMA v1
 
 **Creado:** 06/09/2026 01:18 CEST  
-**Última actualización:** 06/09/2026 01:18 CEST  
-**Estado:** en curso (implementación validada; despliegue pendiente)
+**Última actualización:** 06/09/2026 01:21 CEST  
+**Estado:** completada
 
 ## Objetivo de esta iteración
 
@@ -73,7 +73,21 @@ No cambia permisos, políticas RLS ni el modelo de datos.
 
 ## Pendiente inmediato
 
-- Publicar la nueva versión en GitHub Pages y verificar las rutas públicas.
 - En una iteración futura, definir variantes horizontales del logotipo y reglas
   de personalización de marca para restaurantes clientes.
 
+## Despliegue
+
+**06/09/2026 01:20 CEST:** el commit `84708aa` se desplegó correctamente con
+el workflow `Deploy frontend to GitHub Pages`, ejecución `33998370855`.
+
+- Portada: `https://martinmarch.github.io/POMA/`.
+- Carta DEMO: `https://martinmarch.github.io/POMA/r/demo?table=c0ffee00-0000-4000-8000-000000000001`.
+- El SVG público devuelve `200 image/svg+xml` y coincide byte a byte con el
+  archivo versionado.
+- La portada y la carta DEMO se comprobaron mediante renderizado real después
+  del despliegue.
+
+El asesor de seguridad no detectó regresiones de esta migración. Permanece el
+aviso previo de proyecto sobre la protección de contraseñas filtradas de
+Supabase Auth, ajeno a este cambio visual.
