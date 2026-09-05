@@ -22,18 +22,22 @@ nvm install
 nvm use
 npm install
 cp apps/web/.env.example apps/web/.env.local
-npm run db:start
 ```
 
-Al arrancar, Supabase muestra las credenciales locales. Copia la clave
-publicable en `apps/web/.env.local` y después inicia React:
+Configura en `apps/web/.env.local` la URL y la clave publicable del proyecto
+remoto. Esta copia de trabajo ya las tiene configuradas en ese archivo, que Git
+ignora. Después inicia React:
 
 ```bash
 npm run dev
 ```
 
-La web queda disponible normalmente en `http://localhost:5173` y Supabase
-Studio en `http://localhost:54323`.
+La web queda disponible normalmente en `http://localhost:5173`.
+
+Para desarrollar contra Supabase local en lugar del proyecto remoto, ejecuta
+`npm run db:start` y sustituye temporalmente los valores de `.env.local` por la
+URL y la clave publicable que muestra el comando. Supabase Studio queda entonces
+disponible en `http://localhost:54323`.
 
 ## Comandos
 
