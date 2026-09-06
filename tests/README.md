@@ -1,7 +1,7 @@
 # Tests de POMA
 
 **Creado:** 06/09/2026 01:37 CEST  
-**Última actualización:** 06/09/2026 02:06 CEST
+**Última actualización:** 06/09/2026 02:08 CEST
 
 Esta carpeta concentra las pruebas automatizadas de la web completa.
 
@@ -38,8 +38,9 @@ Para regenerar deliberadamente snapshots visuales:
 npm run test:web:update
 ```
 
-El deploy de Pages ejecuta el subconjunto determinista que no requiere
-descargar Supabase completo en un runner efímero:
+El deploy de Pages ejecuta el subconjunto determinista de lógica e invariantes
+del SVG. No requiere descargar Supabase ni depende del rasterizador de una
+versión concreta de Chrome en el runner efímero:
 
 ```bash
 npm run test:ci

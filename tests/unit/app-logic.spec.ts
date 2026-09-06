@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test'
+import { readFile } from 'node:fs/promises'
+import { resolve } from 'node:path'
 import { getAuthErrorMessage } from '../../apps/web/src/features/auth/auth-errors'
 import { safeNext } from '../../apps/web/src/lib/navigation'
 import { slugify } from '../../apps/web/src/lib/slug'
@@ -25,5 +27,15 @@ test.describe('lógica compartida de la aplicación', () => {
     expect(getAuthErrorMessage({ code: 'email_not_confirmed' }, 'login'))
       .toContain('Confirma tu correo')
   })
-})
 
+  test('protege la proporción y las capas vectoriales del símbolo', async () => {
+    const logoPath = resolve(process.cwd(), 'apps/web/public/brand/poma-symbol.svg')
+    const svg = await readFile(logoPath, 'utf8')
+
+    expect(svg).toContain('viewBox="310 235 670 805"')
+    expect(svg).toContain('preserveAspectRatio="xMidYMid meet"')
+    expect(svg.match(/<path\b/g)).toHaveLength(2)
+    expect(svg).toContain('fill="url(#poma-green)"')
+    expect(svg).toContain('fill="url(#poma-gold)"')
+  })
+})

@@ -1,7 +1,7 @@
 # Auditoría funcional, registro y pruebas web
 
 **Creado:** 06/09/2026 01:53 CEST  
-**Última actualización:** 06/09/2026 02:06 CEST
+**Última actualización:** 06/09/2026 02:08 CEST
 **Estado:** completada con dependencia externa documentada
 
 ## Objetivo de esta iteración
@@ -91,13 +91,20 @@ mínimo excede el límite interno de arranque en frío de Supabase en Actions. S
 separaron las capas de validación:
 
 - `npm test` conserva los 11 casos integrales con Supabase local;
-- `npm run test:ci` ejecuta lógica y regresión visual de forma determinista
-  antes de cada deploy de Pages;
+- `npm run test:ci` ejecuta lógica e invariantes vectoriales del SVG de forma
+  determinista antes de cada deploy de Pages;
 - `npm run test:smoke` queda disponible para validar la web publicada sin
   mutar datos remotos.
 
 Este cambio no reduce la suite del repositorio; evita que la publicación del
 frontend dependa de descargar una plataforma Docker completa en cada push.
+La comparación visual pixel a pixel se mantiene en `npm test`, donde se ejecuta
+con el navegador de referencia del proyecto.
+
+**06/09/2026 02:08 CEST:** la comprobación visual se retiró del subconjunto de
+CI al confirmar que dependía del navegador preinstalado del runner. Se añadió
+una prueba estructural del `viewBox`, preservación de aspecto y capas verde y
+dorada. `npm run test:ci` quedó validado con 4/4 casos sin navegador.
 
 ## Resultado de validación
 

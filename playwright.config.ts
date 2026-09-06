@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
 const externalBaseUrl = process.env.PLAYWRIGHT_BASE_URL
+const skipWebServer = process.env.POMA_SKIP_WEB_SERVER === '1'
 
 export default defineConfig({
   testDir: './tests',
@@ -18,7 +19,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
-  webServer: externalBaseUrl
+  webServer: externalBaseUrl || skipWebServer
     ? undefined
     : {
         command: 'npm run dev --workspace @poma/web -- --host 127.0.0.1 --port 4173',
@@ -36,4 +37,3 @@ export default defineConfig({
     },
   ],
 })
-
