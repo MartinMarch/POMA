@@ -1,7 +1,7 @@
 # Contexto vivo de POMA
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 06/09/2026 13:53 CEST
+**Última actualización:** 06/09/2026 14:16 CEST
 
 Esta carpeta es la fuente rápida de contexto funcional y técnico para las
 personas y agentes de código que trabajen en POMA.
@@ -31,3 +31,4 @@ personas y agentes de código que trabajen en POMA.
 | 06/09/2026 02:10 CEST | [Auditoría funcional, registro y tests web](./2026-09-06_01-53_auditoria-funcional-registro-y-tests-web.md) | Vectorización fiel del PNG, diagnóstico de Auth, correcciones funcionales y suite integral Playwright |
 | 06/09/2026 13:43 CEST | [API central y laboratorio Oracle Simphony](./2026-09-06_13-23_api-y-laboratorio-simphony.md) | FastAPI central, validación QR, límite TPV neutral, adaptador STSG2, mock Docker y pruebas de extremo a extremo |
 | 06/09/2026 13:53 CEST | [Guía local y alcance sin sandbox Oracle](./2026-09-06_13-50_guia-local-sin-sandbox-oracle.md) | Aclaración del alcance de laboratorio y runbook para levantar y probar toda la plataforma local |
+| 06/09/2026 14:16 CEST | [Publicación de API y laboratorio](./2026-09-06_14-16_publicacion-api-y-laboratorio.md) | Push de la vertical, comprobaciones de secretos, workflow Pages y límite de la API pública pendiente |
