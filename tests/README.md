@@ -1,7 +1,7 @@
 # Tests de POMA
 
 **Creado:** 06/09/2026 01:37 CEST  
-**Última actualización:** 06/09/2026 01:56 CEST
+**Última actualización:** 06/09/2026 02:06 CEST
 
 Esta carpeta concentra las pruebas automatizadas de la web completa.
 
@@ -37,6 +37,16 @@ Para regenerar deliberadamente snapshots visuales:
 ```bash
 npm run test:web:update
 ```
+
+El deploy de Pages ejecuta el subconjunto determinista que no requiere
+descargar Supabase completo en un runner efímero:
+
+```bash
+npm run test:ci
+```
+
+La validación integral y mutable permanece en `npm test`; siempre utiliza la
+base local reconstruida y nunca el proyecto remoto.
 
 Para una comprobación pública de solo lectura sobre Pages:
 

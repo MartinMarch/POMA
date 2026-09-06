@@ -14,6 +14,7 @@
     "test": "npm run test:web",
     "test:web": "node tests/run-web-tests.mjs",
     "test:web:update": "node tests/run-web-tests.mjs --update-snapshots",
+    "test:ci": "playwright test tests/unit/app-logic.spec.ts tests/e2e/logo.spec.ts",
     "test:smoke": "PLAYWRIGHT_BASE_URL=https://martinmarch.github.io/POMA/ playwright test tests/e2e/public-and-cart.spec.ts tests/e2e/logo.spec.ts",
     "db:start": "supabase start",
     "db:stop": "supabase stop",

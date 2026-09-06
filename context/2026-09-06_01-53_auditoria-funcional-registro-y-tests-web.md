@@ -1,7 +1,7 @@
 # Auditoría funcional, registro y pruebas web
 
 **Creado:** 06/09/2026 01:53 CEST  
-**Última actualización:** 06/09/2026 02:02 CEST
+**Última actualización:** 06/09/2026 02:06 CEST
 **Estado:** completada con dependencia externa documentada
 
 ## Objetivo de esta iteración
@@ -78,14 +78,26 @@ Se creó `tests/` con Playwright 1.63 y tres grupos:
 
 `npm test` inicia Supabase local, reconstruye todas las migraciones, inyecta
 solo las claves locales, ejecuta Chrome y detiene los contenedores. Se fijó
-Node.js 24.20.0 en `.nvmrc`. El workflow de Pages ejecutará la suite antes de
-construir un despliegue.
+Node.js 24.20.0 en `.nvmrc`.
 
 **06/09/2026 02:02 CEST:** la primera ejecución del nuevo pipeline agotó el
 arranque del stack completo de Supabase en un runner limpio. El ejecutor se
 ajustó para iniciar solo PostgreSQL, Auth, REST y la puerta de enlace, que son
 los servicios usados por estas pruebas. La suite reducida se volvió a validar
 localmente con 11/11 casos correctos antes de reintentar el despliegue.
+
+**06/09/2026 02:06 CEST:** un segundo runner confirmó que incluso el conjunto
+mínimo excede el límite interno de arranque en frío de Supabase en Actions. Se
+separaron las capas de validación:
+
+- `npm test` conserva los 11 casos integrales con Supabase local;
+- `npm run test:ci` ejecuta lógica y regresión visual de forma determinista
+  antes de cada deploy de Pages;
+- `npm run test:smoke` queda disponible para validar la web publicada sin
+  mutar datos remotos.
+
+Este cambio no reduce la suite del repositorio; evita que la publicación del
+frontend dependa de descargar una plataforma Docker completa en cada push.
 
 ## Resultado de validación
 

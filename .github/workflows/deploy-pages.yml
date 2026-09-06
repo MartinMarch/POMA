@@ -36,8 +36,8 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Test complete web flows
-        run: npm test
+      - name: Test deterministic CI checks
+        run: npm run test:ci
 
       - name: Configure GitHub Pages
         id: pages

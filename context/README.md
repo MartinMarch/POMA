@@ -1,7 +1,7 @@
 # Contexto vivo de POMA
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 06/09/2026 02:02 CEST
+**Última actualización:** 06/09/2026 02:06 CEST
 
 Esta carpeta es la fuente rápida de contexto funcional y técnico para las
 personas y agentes de código que trabajen en POMA.
@@ -28,4 +28,4 @@ personas y agentes de código que trabajen en POMA.
 | 06/09/2026 00:21 CEST | [Identidad, onboarding y superadministración](./2026-09-06_00-21_identidad-onboarding-y-superadministracion.md) | Auth, alta transaccional de restaurantes, roles, consola global y pruebas de aislamiento |
 | 06/09/2026 00:36 CEST | [Pages y QR aislado de DEMO](./2026-09-06_00-36_pages-y-qr-demo-aislada.md) | Cuenta global activa, herramienta interna, Pages publicado y QR verificado desde Internet |
 | 06/09/2026 01:18 CEST | [Identidad visual POMA v1](./2026-09-06_01-18_identidad-visual-logo-v1.md) | Logo SVG, sistema visual verde/dorado, favicon y aplicación transversal a consolas y cartas |
-| 06/09/2026 02:02 CEST | [Auditoría funcional, registro y tests web](./2026-09-06_01-53_auditoria-funcional-registro-y-tests-web.md) | Vectorización fiel del PNG, diagnóstico de Auth, correcciones funcionales y suite integral Playwright |
+| 06/09/2026 02:06 CEST | [Auditoría funcional, registro y tests web](./2026-09-06_01-53_auditoria-funcional-registro-y-tests-web.md) | Vectorización fiel del PNG, diagnóstico de Auth, correcciones funcionales y suite integral Playwright |
