@@ -1,7 +1,7 @@
 # Registro de horas
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 06/09/2026 01:56 CEST
+**Última actualización:** 06/09/2026 02:02 CEST
 
 | Sesión | Inicio | Fin | Duración | Ejecución | Trabajo realizado |
 | --- | --- | --- | --- | --- | --- |
@@ -13,13 +13,13 @@
 | 006 | 06/09/2026 00:25 CEST (inicio estimado) | 06/09/2026 00:47 CEST | 22 min (0,37 h) | Agente de código | Primera cuenta superadmin, separación de DEMO, frontend operativo, workflow de Pages, variables de Actions, QR verificable y diagnóstico del bloqueo de plan |
 | 007 | 06/09/2026 00:49 CEST (inicio estimado) | 06/09/2026 00:52 CEST | 3 min (0,05 h) | Agente de código | Habilitación de GitHub Pages, ejecución completa del pipeline y verificación pública de portada, login y QR de DEMO |
 | 008 | 06/09/2026 00:54 CEST (inicio estimado) | 06/09/2026 01:21 CEST | 27 min (0,45 h) | Agente de código | Vectorización y preservación del logo, sistema visual transversal, favicon, migración del acento de restaurantes, pruebas locales/remotas y despliegue verificado |
-| 009 | 06/09/2026 01:22 CEST (inicio estimado) | 06/09/2026 01:56 CEST | 34 min (0,57 h) | Agente de código | Revectorización fiel del logo, diagnóstico de registro remoto, mejoras de Auth, correcciones de consola y suite integral Playwright con Supabase local |
+| 009 | 06/09/2026 01:22 CEST (inicio estimado) | 06/09/2026 02:02 CEST | 40 min (0,67 h) | Agente de código | Revectorización fiel del logo, diagnóstico de registro remoto, mejoras de Auth, correcciones de consola y suite integral Playwright con Supabase local/CI |
 
 ## Totales
 
-**Actualizado:** 06/09/2026 01:56 CEST
+**Actualizado:** 06/09/2026 02:02 CEST
 
-- Tiempo finalizado: **187 minutos (3,12 horas)**.
+- Tiempo finalizado: **193 minutos (3,22 horas)**.
 - La hora de inicio de la sesión 004 es una estimación basada en el comienzo de
   la ejecución registrada; su fin sí se tomó del reloj del sistema.
 - El inicio de la sesión 005 también es estimado; su fin está medido por el

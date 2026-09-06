@@ -1,7 +1,7 @@
 # Auditoría funcional, registro y pruebas web
 
 **Creado:** 06/09/2026 01:53 CEST  
-**Última actualización:** 06/09/2026 01:56 CEST  
+**Última actualización:** 06/09/2026 02:02 CEST
 **Estado:** completada con dependencia externa documentada
 
 ## Objetivo de esta iteración
@@ -80,6 +80,12 @@ Se creó `tests/` con Playwright 1.63 y tres grupos:
 solo las claves locales, ejecuta Chrome y detiene los contenedores. Se fijó
 Node.js 24.20.0 en `.nvmrc`. El workflow de Pages ejecutará la suite antes de
 construir un despliegue.
+
+**06/09/2026 02:02 CEST:** la primera ejecución del nuevo pipeline agotó el
+arranque del stack completo de Supabase en un runner limpio. El ejecutor se
+ajustó para iniciar solo PostgreSQL, Auth, REST y la puerta de enlace, que son
+los servicios usados por estas pruebas. La suite reducida se volvió a validar
+localmente con 11/11 casos correctos antes de reintentar el despliegue.
 
 ## Resultado de validación
 

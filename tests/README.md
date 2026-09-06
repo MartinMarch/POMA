@@ -24,9 +24,10 @@ Esta carpeta concentra las pruebas automatizadas de la web completa.
 npm test
 ```
 
-El comando levanta Supabase local, reconstruye la base desde migraciones,
-inyecta sus claves públicas en Vite, ejecuta Chrome con Playwright y detiene los
-servicios al terminar. Requiere Docker y Google Chrome.
+El comando levanta únicamente los servicios locales de Supabase necesarios
+para Auth y REST, reconstruye la base desde migraciones, inyecta sus claves
+públicas en Vite, ejecuta Chrome con Playwright y detiene los servicios al
+terminar. Requiere Docker y Google Chrome.
 
 El repositorio fija Node.js 24.20.0 en `.nvmrc`. Antes de instalar o ejecutar
 las pruebas, activa esa versión con `nvm use`.

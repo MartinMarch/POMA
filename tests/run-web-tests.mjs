@@ -4,6 +4,18 @@ import { dirname, resolve } from 'node:path'
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const forwardedArguments = process.argv.slice(2)
+const excludedServices = [
+  'realtime',
+  'storage-api',
+  'imgproxy',
+  'postgres-meta',
+  'studio',
+  'edge-runtime',
+  'logflare',
+  'vector',
+  'supavisor',
+  'mailpit',
+].join(',')
 
 function run(command, arguments_, options = {}) {
   const result = spawnSync(command, arguments_, {
@@ -22,7 +34,7 @@ function run(command, arguments_, options = {}) {
 let exitCode = 1
 
 try {
-  run('npx', ['supabase', 'start'])
+  run('npx', ['supabase', 'start', '--exclude', excludedServices])
   run('npx', ['supabase', 'db', 'reset'])
 
   const statusOutput = execFileSync(
@@ -62,4 +74,3 @@ try {
 }
 
 process.exit(exitCode)
-
