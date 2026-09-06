@@ -1,7 +1,7 @@
 # Auditoría funcional, registro y pruebas web
 
 **Creado:** 06/09/2026 01:53 CEST  
-**Última actualización:** 06/09/2026 02:08 CEST
+**Última actualización:** 06/09/2026 02:10 CEST
 **Estado:** completada con dependencia externa documentada
 
 ## Objetivo de esta iteración
@@ -126,3 +126,13 @@ no se eliminan antes de observar carga representativa.
 El catálogo y el carrito funcionan. El envío definitivo de comandas, Apple Pay
 y la integración con TPV continúan señalados en la interfaz como siguiente
 iteración; no se presentan como funciones terminadas en esta auditoría.
+
+## Despliegue
+
+**06/09/2026 02:10 CEST:** el commit `fe92270` superó el workflow completo y
+se publicó en GitHub Pages mediante la ejecución `34000526973`.
+
+- El SVG público coincide byte a byte con el activo versionado.
+- La portada pública responde `200` y referencia el favicon bajo `/POMA/`.
+- `npm run test:smoke`: **5/5 comprobaciones públicas correctas** sobre
+  portada, logo, QR, carta, carrito y ruta de error.

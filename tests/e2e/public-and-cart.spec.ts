@@ -9,9 +9,12 @@ test('la portada conduce al registro real de propietarios', async ({ page }) => 
   await expect(page.locator('img[src$="brand/poma-symbol.svg"]').first()).toBeVisible()
   const faviconHref = await page.locator('link[rel="icon"]').getAttribute('href')
   expect(faviconHref).toMatch(/\/brand\/poma-symbol\.svg$/)
-  const faviconResponse = await page.request.get(new URL(faviconHref!, page.url()).toString())
-  expect(faviconResponse.ok()).toBeTruthy()
-  expect(faviconResponse.headers()['content-type']).toContain('image/svg+xml')
+  const faviconResponse = await page.evaluate(async (href) => {
+    const response = await fetch(href)
+    return { ok: response.ok, contentType: response.headers.get('content-type') }
+  }, faviconHref!)
+  expect(faviconResponse.ok).toBeTruthy()
+  expect(faviconResponse.contentType).toContain('image/svg+xml')
   await page.getByRole('link', { name: /Registrar un restaurante/i }).click()
   await expect(page.getByRole('heading', { name: /Tu local, conectado/i })).toBeVisible()
 

@@ -1,7 +1,7 @@
 # Tests de POMA
 
 **Creado:** 06/09/2026 01:37 CEST  
-**Última actualización:** 06/09/2026 02:08 CEST
+**Última actualización:** 06/09/2026 02:10 CEST
 
 Esta carpeta concentra las pruebas automatizadas de la web completa.
 
