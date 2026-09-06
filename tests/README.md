@@ -1,9 +1,10 @@
 # Tests de POMA
 
 **Creado:** 06/09/2026 01:37 CEST  
-**Última actualización:** 06/09/2026 02:10 CEST
+**Última actualización:** 06/09/2026 13:43 CEST
 
-Esta carpeta concentra las pruebas automatizadas de la web completa.
+Esta carpeta concentra las pruebas transversales de POMA. Las suites unitarias
+propias de cada servicio Python viven junto a esos servicios.
 
 ## Cobertura actual
 
@@ -17,6 +18,8 @@ Esta carpeta concentra las pruebas automatizadas de la web completa.
 - `e2e/logo.spec.ts`: regresión visual del SVG para evitar nuevas
   deformaciones. La navegación pública comprueba también que el favicon se
   entrega como SVG.
+- `integration/tpv-lab-smoke.sh`: comprueba con HTTP real el recorrido POMA
+  API → `TPVAdapter` → Simphony Mock, incluida la idempotencia.
 
 ## Ejecución
 
@@ -54,6 +57,16 @@ Para una comprobación pública de solo lectura sobre Pages:
 ```bash
 npm run test:smoke
 ```
+
+Con Supabase local y los dos servicios de `compose.yaml` ya levantados:
+
+```bash
+npm run test:integration
+```
+
+El smoke requiere `curl` y `jq`. El token que aparece en el script es solo el
+fixture público determinista del entorno DEMO; no se importa ni se compila en
+React.
 
 Las pruebas nunca deben apuntar los flujos mutables de autenticación contra el
 proyecto remoto.

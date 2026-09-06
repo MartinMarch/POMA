@@ -1,8 +1,16 @@
 # Registro 004 — Demo, vertical 001: catálogo multitenant
 
 **Creado:** 05/09/2026 23:40 CEST
-**Última actualización:** 06/09/2026 00:36 CEST
-**Estado:** primera vertical completada; pedidos, pagos y TPV pendientes
+**Última actualización:** 06/09/2026 13:43 CEST
+**Estado:** primera vertical completada; API/TPV de laboratorio continuados el
+06/09/2026 13:23 CEST; pedidos y pagos reales pendientes
+
+> **Actualización 06/09/2026 13:23 CEST:** la sección que presenta `apps/api`
+> como «siguiente vertical» queda obsoleta. La primera API central, el límite
+> neutral `TPVAdapter` y el laboratorio Oracle Simphony están documentados en
+> [API central y laboratorio Oracle Simphony](./2026-09-06_13-23_api-y-laboratorio-simphony.md).
+> El esquema previsto de pedidos continúa siendo una propuesta, no una
+> migración aprobada.
 
 ## Objetivo de la demo completa
 

@@ -1,7 +1,7 @@
 # Registro de horas
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 06/09/2026 02:10 CEST
+**Última actualización:** 06/09/2026 13:53 CEST
 
 | Sesión | Inicio | Fin | Duración | Ejecución | Trabajo realizado |
 | --- | --- | --- | --- | --- | --- |
@@ -14,12 +14,14 @@
 | 007 | 06/09/2026 00:49 CEST (inicio estimado) | 06/09/2026 00:52 CEST | 3 min (0,05 h) | Agente de código | Habilitación de GitHub Pages, ejecución completa del pipeline y verificación pública de portada, login y QR de DEMO |
 | 008 | 06/09/2026 00:54 CEST (inicio estimado) | 06/09/2026 01:21 CEST | 27 min (0,45 h) | Agente de código | Vectorización y preservación del logo, sistema visual transversal, favicon, migración del acento de restaurantes, pruebas locales/remotas y despliegue verificado |
 | 009 | 06/09/2026 01:22 CEST (inicio estimado) | 06/09/2026 02:10 CEST | 48 min (0,80 h) | Agente de código | Revectorización fiel del logo, diagnóstico de registro remoto, mejoras de Auth, correcciones de consola, suite Playwright local/CI y despliegue verificado |
+| 010 | 06/09/2026 12:43 CEST (inicio estimado) | 06/09/2026 13:43 CEST | 60 min (1,00 h) | Agente de código | API central FastAPI, límite TPV neutral, adaptador Oracle Simphony, mock STSG2 Docker, validación QR segura, migración local/remota, integración React, pruebas y documentación |
+| 011 | 06/09/2026 13:49 CEST | 06/09/2026 13:53 CEST | 4 min (0,07 h) | Agente de código | Aclaración del alcance previo al sandbox Oracle y creación del runbook completo de desarrollo, arranque, pruebas, diagnóstico y apagado local |
 
 ## Totales
 
-**Actualizado:** 06/09/2026 02:10 CEST
+**Actualizado:** 06/09/2026 13:53 CEST
 
-- Tiempo finalizado: **201 minutos (3,35 horas)**.
+- Tiempo finalizado: **265 minutos (4,42 horas)**.
 - La hora de inicio de la sesión 004 es una estimación basada en el comienzo de
   la ejecución registrada; su fin sí se tomó del reloj del sistema.
 - El inicio de la sesión 005 también es estimado; su fin está medido por el
@@ -32,3 +34,5 @@
   al primer despliegue; su fin está medido por el reloj del entorno.
 - El inicio de la sesión 009 es estimado a partir de la petición de auditoría;
   su fin está medido por el reloj del entorno.
+- El inicio de la sesión 010 es estimado a partir del comienzo de la ejecución
+  de esta vertical; su fin está medido por el reloj del entorno.

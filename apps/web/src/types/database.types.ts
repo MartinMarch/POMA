@@ -293,6 +293,7 @@ export type Database = {
           locale: string
           logo_url: string | null
           name: string
+          requires_table_token: boolean
           slug: string
           timezone: string
           updated_at: string
@@ -308,6 +309,7 @@ export type Database = {
           locale?: string
           logo_url?: string | null
           name: string
+          requires_table_token?: boolean
           slug: string
           timezone?: string
           updated_at?: string
@@ -323,6 +325,7 @@ export type Database = {
           locale?: string
           logo_url?: string | null
           name?: string
+          requires_table_token?: boolean
           slug?: string
           timezone?: string
           updated_at?: string
@@ -355,6 +358,7 @@ export type Database = {
           locale: string
           logo_url: string | null
           name: string
+          requires_table_token: boolean
           slug: string
           timezone: string
           updated_at: string
@@ -365,6 +369,14 @@ export type Database = {
           isOneToOne: true
           isSetofReturn: false
         }
+      }
+      resolve_table_context: {
+        Args: { public_token: string; restaurant_slug: string }
+        Returns: {
+          restaurant_id: number
+          table_id: number
+          table_name: string
+        }[]
       }
     }
     Enums: {

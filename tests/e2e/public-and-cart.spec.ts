@@ -30,11 +30,11 @@ test('la DEMO exige el QR válido', async ({ page }) => {
   await expect(page.getByText(/requiere el QR de una mesa válida/i)).toBeVisible()
 })
 
-test('la carta carga desde Supabase y el carrito calcula la comanda', async ({ page }) => {
+test('la carta carga desde FastAPI y el carrito calcula la comanda', async ({ page }) => {
   await page.goto(demoPath)
 
   await expect(page.getByRole('heading', { name: 'DEMO', exact: true })).toBeVisible()
-  await expect(page.getByText('DEMO · Mesa 01')).toBeVisible()
+  await expect(page.getByText('DEMO · Mesa 1')).toBeVisible()
 
   await page.getByRole('button', { name: 'Añadir Bravas POMA' }).click()
   const cartButton = page.getByRole('button', { name: /Ver mi comanda/i })

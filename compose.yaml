@@ -1,0 +1,64 @@
+name: poma-lab
+
+services:
+  simphony-mock:
+    build:
+      context: ./labs/simphony-mock
+    environment:
+      SIMPHONY_MOCK_TOKEN: ${SIMPHONY_TOKEN:-local-development-token}
+      SIMPHONY_MOCK_CONNECTED: "true"
+      SIMPHONY_MOCK_LAB_TIMEOUT_SECONDS: "2"
+    ports:
+      - "9100:9100"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request; urllib.request.urlopen('http://127.0.0.1:9100/health')
+      interval: 5s
+      timeout: 2s
+      retries: 10
+      start_period: 5s
+    networks:
+      - poma-private
+
+  poma-api:
+    build:
+      context: ./apps/api
+    environment:
+      SUPABASE_URL: ${SUPABASE_URL:?Set SUPABASE_URL in .env.compose}
+      SUPABASE_PUBLISHABLE_KEY: ${SUPABASE_PUBLISHABLE_KEY:?Set SUPABASE_PUBLISHABLE_KEY in .env.compose}
+      SIMPHONY_BASE_URL: http://simphony-mock:9100
+      SIMPHONY_AUTH_MODE: static
+      SIMPHONY_TOKEN: ${SIMPHONY_TOKEN:-local-development-token}
+      SIMPHONY_ORG_SHORT_NAME: POMALAB
+      SIMPHONY_LOC_REF: barcelona01
+      SIMPHONY_RVC_REF: "1"
+      SIMPHONY_CHECK_EMPLOYEE_REF: "1"
+      SIMPHONY_ORDER_TYPE_REF: "1"
+      ENABLE_LAB_ENDPOINTS: ${ENABLE_LAB_ENDPOINTS:-true}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173,http://127.0.0.1:4173}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - "${POMA_API_PORT:-8000}:8000"
+    depends_on:
+      simphony-mock:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/openapi.json')
+      interval: 5s
+      timeout: 2s
+      retries: 10
+      start_period: 5s
+    networks:
+      - poma-private
+
+networks:
+  poma-private:
+    driver: bridge

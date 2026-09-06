@@ -6,11 +6,12 @@ recibe la comanda para prepararla y servirla.
 
 ## Estado
 
-La primera versión incluye una herramienta de acceso y configuración,
-autenticación de propietarios, alta de restaurantes y una consola global de
-superadministración. La experiencia DEMO para clientes se mantiene separada y
-solo se distribuye mediante el QR de una mesa. La persistencia de pedidos, el
-pago real y el conector TPV son las siguientes verticales.
+La primera versión incluye la herramienta de configuración y
+superadministración, la experiencia DEMO aislada por QR y una API FastAPI que
+valida la mesa y sirve el catálogo desde Supabase. El primer límite neutral de
+TPV está conectado a un laboratorio Docker de Oracle Simphony STSG2. La
+persistencia de pedidos, el pago real y la validación con un TPV físico siguen
+pendientes.
 
 ## Recorridos disponibles
 
@@ -28,9 +29,14 @@ pago real y el conector TPV son las siguientes verticales.
 
 - Node.js 22.12 o superior (el repositorio fija la LTS recomendada en `.nvmrc`).
 - npm 10 o superior.
+- Python 3.10–3.13 y [uv](https://docs.astral.sh/uv/) para API y laboratorio.
 - Docker o un runtime compatible para ejecutar Supabase en local.
 
 ## Puesta en marcha
+
+La guía completa para configurar el entorno, levantar todos los servicios y
+ejecutar cada nivel de pruebas está en
+[`DESARROLLO_LOCAL.md`](./DESARROLLO_LOCAL.md).
 
 ```bash
 nvm install
@@ -40,8 +46,21 @@ cp apps/web/.env.example apps/web/.env.local
 ```
 
 Configura en `apps/web/.env.local` la URL y la clave publicable del proyecto
-remoto. Esta copia de trabajo ya las tiene configuradas en ese archivo, que Git
-ignora. Después inicia React:
+remoto y `VITE_API_URL=http://localhost:8000`. Esta copia de trabajo ya conserva
+su configuración privada en un archivo ignorado por Git.
+
+Para levantar Supabase local, la API y el TPV simulado:
+
+```bash
+npm run db:start
+cp .env.compose.example .env.compose
+# Copia en .env.compose la clave publicable mostrada por `supabase status`.
+npm run compose:up
+```
+
+Supabase no forma parte de Compose: puede ser el proyecto remoto o el stack
+local accesible como `http://host.docker.internal:54321`. React permanece fuera
+de Docker y se inicia aparte:
 
 ```bash
 npm run dev
@@ -52,10 +71,23 @@ La web queda disponible normalmente en `http://localhost:5173`.
 ## Demo por QR
 
 La presentación del restaurante `DEMO` se abre exclusivamente con el QR de la
-Mesa 01. Los archivos para pantalla e impresión están en
+Mesa 1. Los archivos para pantalla e impresión están en
 [`assets/qr/`](./assets/qr/README.md). La ruta abre únicamente cuando incluye
-el token de mesa esperado; `/demo` ya no existe y la vista se marca como
-`noindex`.
+un token de mesa que FastAPI valida mediante un RPC seguro; `/demo` ya no
+existe y la vista se marca como `noindex`.
+
+## API y laboratorio TPV
+
+La documentación operativa está en [`apps/api/`](./apps/api/README.md) y
+[`labs/simphony-mock/`](./labs/simphony-mock/README.md). Por defecto:
+
+- POMA API: `http://localhost:8000`, OpenAPI en `/docs`.
+- Simphony Mock: `http://localhost:9100`.
+- React: `http://localhost:5173`.
+
+Los endpoints `/api/v1/lab/tpv/*` solo existen con
+`ENABLE_LAB_ENDPOINTS=true`. Son una herramienta de conectividad y no crean
+pedidos ni pagos persistentes.
 
 ## GitHub Pages
 
@@ -68,8 +100,10 @@ La herramienta está publicada en
 [`https://martinmarch.github.io/POMA/`](https://martinmarch.github.io/POMA/).
 
 La URL y la clave publicable de Supabase se leen desde las variables de GitHub
-Actions `VITE_SUPABASE_URL` y `VITE_SUPABASE_PUBLISHABLE_KEY`. Son parámetros
-de cliente; ninguna clave `service_role` ni contraseña se guarda en Git.
+Actions `VITE_SUPABASE_URL` y `VITE_SUPABASE_PUBLISHABLE_KEY`. La URL de un
+despliegue público futuro de FastAPI se configurará en `VITE_API_URL`. Son
+parámetros de cliente; ninguna clave `service_role` ni contraseña se guarda en
+Git.
 
 Para desarrollar contra Supabase local en lugar del proyecto remoto, ejecuta
 `npm run db:start` y sustituye temporalmente los valores de `.env.local` por la
@@ -84,6 +118,12 @@ disponible en `http://localhost:54323`.
 | `npm run build` | Compila el frontend |
 | `npm run lint` | Ejecuta el linter |
 | `npm run typecheck` | Comprueba los tipos TypeScript |
+| `npm run test` | Ejecuta Playwright con Supabase y FastAPI locales |
+| `npm run python:lint` | Ejecuta Ruff en API y mock |
+| `npm run python:test` | Ejecuta pytest en API y mock |
+| `npm run test:integration` | Ejecuta el smoke HTTP completo de catálogo y TPV |
+| `npm run compose:up` | Construye e inicia POMA API y Simphony Mock |
+| `npm run compose:down` | Detiene los servicios POMA de Compose |
 | `npm run db:start` | Inicia Supabase local |
 | `npm run db:stop` | Detiene Supabase local |
 | `npm run db:reset` | Recrea la base de datos desde migraciones y semillas |
@@ -96,9 +136,12 @@ disponible en `http://localhost:54323`.
 POMA/
 ├── .github/          # Automatización de integración y despliegue
 ├── apps/
+│   ├── api/          # API central FastAPI y adaptadores de infraestructura
 │   └── web/          # Herramienta interna, cartas y panel con React
 ├── assets/           # Material operativo, incluidos los QR de mesas
 ├── context/          # Contexto y diario técnico del proyecto
+├── labs/
+│   └── simphony-mock/ # Laboratorio reproducible Oracle Simphony STSG2
 ├── Seguimiento/      # Registro de sesiones y dedicación
 └── supabase/         # Configuración, migraciones y semillas locales
 ```
@@ -113,3 +156,6 @@ La arquitectura de la demo y el esquema actual están documentados en
 El modelo de identidad, la activación de administradores y las garantías de
 seguridad están en
 [`context/2026-09-06_00-21_identidad-onboarding-y-superadministracion.md`](./context/2026-09-06_00-21_identidad-onboarding-y-superadministracion.md).
+
+La API, la validación QR y el laboratorio TPV están documentados en
+[`context/2026-09-06_13-23_api-y-laboratorio-simphony.md`](./context/2026-09-06_13-23_api-y-laboratorio-simphony.md).

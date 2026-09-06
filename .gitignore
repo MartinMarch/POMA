@@ -6,11 +6,17 @@ playwright-report/
 test-results/
 blob-report/
 *.tsbuildinfo
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
 
 # Environment and local configuration
 .env
 .env.*
 !.env.example
+!.env.compose.example
 *.local
 
 # Logs

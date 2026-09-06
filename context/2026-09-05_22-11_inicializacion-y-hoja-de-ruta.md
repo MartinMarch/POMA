@@ -1,8 +1,14 @@
 # Registro 001 — Inicialización y hoja de ruta
 
 **Creado:** 05/09/2026 22:11 CEST  
-**Última actualización:** 05/09/2026 22:24 CEST  
-**Estado:** completada la fase 1; fases 2–4 pendientes
+**Última actualización:** 06/09/2026 13:43 CEST
+**Estado:** fases 1–2 completadas; fase 3 iniciada con laboratorio TPV;
+integración real y fase 4 pendientes
+
+> **Actualización 06/09/2026 13:23 CEST:** la fase 3 ya dispone de FastAPI,
+> contrato neutral de TPV, adaptador Oracle Simphony STSG2 y laboratorio local.
+> El detalle y los límites están en
+> [API central y laboratorio Oracle Simphony](./2026-09-06_13-23_api-y-laboratorio-simphony.md).
 
 ## Visión del producto
 

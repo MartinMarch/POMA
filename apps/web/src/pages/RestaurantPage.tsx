@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { Link, useLocation, useParams } from 'react-router'
 import {
+  CatalogError,
   CatalogNotFoundError,
+  CatalogUnavailableError,
+  TableAccessError,
   formatPrice,
   getRestaurantCatalog,
   type CatalogItem,
@@ -11,31 +14,26 @@ import { PomaBrand } from '../components/PomaBrand'
 
 type Cart = Record<number, number>
 type CatalogResult = {
-  slug: string
+  requestKey: string
   catalog: RestaurantCatalog | null
   error: string | null
   settled: boolean
 }
 
-const demoTableToken = 'c0ffee00-0000-4000-8000-000000000001'
-
 export function RestaurantPage() {
   const { slug = '' } = useParams()
   const location = useLocation()
+  const tableToken = new URLSearchParams(location.search).get('table')
+  const requestKey = `${slug}:${tableToken ?? ''}`
   const [result, setResult] = useState<CatalogResult>(() => ({
-    slug,
+    requestKey,
     catalog: null,
     error: null,
     settled: false,
   }))
   const [cart, setCart] = useState<Cart>({})
   const [cartOpen, setCartOpen] = useState(false)
-  const tableToken = new URLSearchParams(location.search).get('table')
-  const demoAccessDenied = slug === 'demo' && tableToken !== demoTableToken
-
   useEffect(() => {
-    if (slug !== 'demo') return
-
     const existingMeta = document.querySelector<HTMLMetaElement>('meta[name="robots"]')
     const robotsMeta = existingMeta ?? document.createElement('meta')
     const previousContent = existingMeta?.content
@@ -47,41 +45,39 @@ export function RestaurantPage() {
       if (existingMeta) existingMeta.content = previousContent ?? ''
       else robotsMeta.remove()
     }
-  }, [slug])
+  }, [])
 
   useEffect(() => {
-    if (demoAccessDenied) return
-
     const controller = new AbortController()
 
-    getRestaurantCatalog(slug, controller.signal)
+    getRestaurantCatalog(slug, tableToken, controller.signal)
       .then((catalog) => {
-        setResult({ slug, catalog, error: null, settled: true })
+        setResult({ requestKey, catalog, error: null, settled: true })
       })
       .catch((reason: unknown) => {
         if (controller.signal.aborted) return
         setResult({
-          slug,
+          requestKey,
           catalog: null,
           error:
-            reason instanceof CatalogNotFoundError
+            reason instanceof CatalogNotFoundError ||
+            reason instanceof TableAccessError ||
+            reason instanceof CatalogUnavailableError
               ? reason.message
-              : 'No hemos podido cargar la carta. Inténtalo de nuevo.',
+              : reason instanceof CatalogError
+                ? reason.message
+                : 'No hemos podido cargar la carta. Inténtalo de nuevo.',
           settled: true,
         })
       })
 
     return () => controller.abort()
-  }, [demoAccessDenied, slug])
+  }, [requestKey, slug, tableToken])
 
-  const isCurrentResult = result.slug === slug
-  const catalog = demoAccessDenied || !isCurrentResult ? null : result.catalog
-  const error = demoAccessDenied
-    ? 'Este acceso de presentación requiere el QR de una mesa válida.'
-    : isCurrentResult
-      ? result.error
-      : null
-  const loading = !demoAccessDenied && (!isCurrentResult || !result.settled)
+  const isCurrentResult = result.requestKey === requestKey
+  const catalog = isCurrentResult ? result.catalog : null
+  const error = isCurrentResult ? result.error : null
+  const loading = !isCurrentResult || !result.settled
 
   const allItems = useMemo(
     () => catalog?.categories.flatMap((category) => category.items) ?? [],
@@ -146,12 +142,10 @@ export function RestaurantPage() {
       <header className="restaurant-header">
         <PomaBrand compact linked={false} />
         <div className="table-badge">
-          <span className={tableToken ? 'online-dot' : 'preview-dot'} />
-          {slug === 'demo' && tableToken === demoTableToken
-            ? 'DEMO · Mesa 01'
-            : tableToken
-              ? 'QR de mesa detectado'
-              : 'Vista previa de carta'}
+          <span className={catalog.table ? 'online-dot' : 'preview-dot'} />
+          {catalog.table
+            ? `${restaurant.name} · ${catalog.table.name}`
+            : 'Vista previa de carta'}
         </div>
       </header>
 

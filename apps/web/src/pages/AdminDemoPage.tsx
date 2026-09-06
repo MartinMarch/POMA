@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router'
 import { PomaBrand } from '../components/PomaBrand'
 
 const stations = [
-  { name: 'Catálogo Supabase', state: 'Conectado', ready: true },
+  { name: 'Catálogo vía POMA API', state: 'Conectado', ready: true },
   { name: 'Entrada de comandas', state: 'Próxima iteración', ready: false },
   { name: 'Pago Apple Pay', state: 'Pendiente de proveedor', ready: false },
   { name: 'Conector TPV', state: 'Pendiente de piloto', ready: false },
@@ -10,9 +10,6 @@ const stations = [
 
 export function AdminDemoPage() {
   const { slug } = useParams()
-  const publicMenuPath = slug === 'demo'
-    ? '/r/demo?table=c0ffee00-0000-4000-8000-000000000001'
-    : `/r/${slug ?? ''}`
 
   return (
     <div className="admin-page">
@@ -21,7 +18,6 @@ export function AdminDemoPage() {
         <nav>
           <a className="active" href="#resumen">Resumen</a>
           <a href="#pedidos">Pedidos</a>
-          <Link to={publicMenuPath}>Ver carta</Link>
           <a href="#integraciones">Integraciones</a>
         </nav>
         <Link className="sidebar-demo-link" to="/panel">Volver al panel</Link>
